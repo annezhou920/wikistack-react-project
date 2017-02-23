@@ -3,37 +3,42 @@ import React, { Component } from 'react';
 export default class AddPage extends Component {
 
   render () {
+    console.log('props', this.props)
+    const handleChange = this.props.handleChange;
+    const handleSubmit = this.props.handleSubmit;
+    const inputValue = this.props.inputValue;
+
     return (
       <div>
         <h3>Add a Page</h3>
         <hr />
-        <form>
+        <form onSubmit={handleSubmit}>
 
           <div className="form-group">
             <label htmlFor="name" className="col-sm-2 control-label">Author Name</label>
             <div className="col-sm-10">
-              <input name="name" type="text" className="form-control"/>
+              <input name="name" type="text" className="form-control" onChange={handleChange} value={inputValue} />
             </div>
           </div>
 
           <div className="form-group">
             <label htmlFor="email" className="col-sm-2 control-label">Author Email</label>
             <div className="col-sm-10">
-              <input name="email" type="text" className="form-control"/>
+              <input name="email" type="text" className="form-control" onChange={handleChange} value={inputValue} />
             </div>
           </div>
 
           <div className="form-group">
             <label htmlFor="title" className="col-sm-2 control-label">Page Title</label>
             <div className="col-sm-10">
-              <input name="title" type="text" className="form-control"/>
+              <input name="title" type="text" className="form-control" onChange={handleChange} value={inputValue} />
             </div>
           </div>
 
           <div className="form-group">
             <label htmlFor="content" className="col-sm-2 control-label">Content</label>
             <div className="col-sm-10">
-              <textarea name="content"></textarea>
+              <textarea name="content" onChange={handleChange} value={inputValue}></textarea>
             </div>
           </div>
 
@@ -50,7 +55,7 @@ export default class AddPage extends Component {
           <div className="form-group">
             <label htmlFor="tags" className="col-sm-2 control-label">Tags</label>
             <div className="col-sm-10">
-              <input name="tags" type="text" className="form-control" />
+              <input name="tags" type="text" className="form-control" onChange={handleChange} value={inputValue} />
             </div>
           </div>
 
