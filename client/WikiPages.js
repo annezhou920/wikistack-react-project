@@ -9,7 +9,7 @@ export default class WikiPages extends Component {
 
   render () {
     const pages = this.props.allpages;
-    console.log(this.props)
+    console.log('pages', pages)
     return (
       <div>
         <h3>Pages</h3>
@@ -20,25 +20,13 @@ export default class WikiPages extends Component {
         </form>
         <hr />
 
-        <h4>List of all pages</h4>
-          <ul className="list-unstyled">
-           <ul>
-             {/* List each page title in this space */}
-             <li>
-               <a href="">PAGE TITLE GOES HERE</a>
-             </li>
-           </ul>
-         </ul>
-
-
             {/* List each page title in this space */
-            pages && pages.map(page => {
+            pages.map(page => {
                 return (
                   <ul className="list-unstyled" key={page.id}>
-                  <li>
-                    <a href="{page.name}">{page.name}</a>
-                    // <Link to={`/api/wiki/:urlTitle`}>{page.name}</Link>
-                  </li>
+                    <li>
+                      <Link to={`/wiki/${page.urlTitle}`}>{page.title}</Link>
+                    </li>
                   </ul>
                 )
               })

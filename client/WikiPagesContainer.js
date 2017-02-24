@@ -3,7 +3,6 @@ import WikiPages from './WikiPages';
 import { loadPages } from './action-creators';
 
 const mapStateToProps = function(state) {
-  console.log('state', state)
   return {
     allpages: state.pages
   }

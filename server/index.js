@@ -12,4 +12,3 @@ db.sync()
     });
   })
   .catch(console.error);
-

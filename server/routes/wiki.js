@@ -18,7 +18,7 @@ router.get('/', function (req, res, next) {
 
 // POST /api/wiki
 router.post('/', function (req, res, next) {
-
+  console.log("req.body", req.body)
   User.findOrCreate({
     where: {
       name: req.body.name,

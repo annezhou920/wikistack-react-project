@@ -5,8 +5,9 @@ import { addWikiPage } from './action-creators';
 
 const mapDispatchToProps = function(dispatch) {
   return {
-    addWikiPage: function(){
-      dispatch(addWikiPage());
+    addNewPage: function(page){
+      console.log('page', page)
+      dispatch(addWikiPage(page));
     }
   }
 }
@@ -15,23 +16,37 @@ class AddPageContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
-      inputValue: ''
+      name: '',
+      email: '',
+      title: '',
+      content: '',
+      tags: ''
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(evt){
+  handleChange(input, evt){
+    const change = {};
     const value = evt.target.value;
-    this.setState({inputValue: value});
+    change[input] = value;
+
+    this.setState(change);
   }
 
 
   handleSubmit(evt){
     evt.preventDefault();
-    this.props.addWikiPage(this.state.inputValue);
-    this.setState({inputValue: ''})
+    console.log('propsContainer', this.props)
+    this.props.addNewPage(this.state);
+    this.setState({
+      name: '',
+      email: '',
+      title: '',
+      content: '',
+      tags: ''
+    })
   }
 
   render(){
@@ -39,7 +54,7 @@ class AddPageContainer extends Component {
       <AddPage
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
-        inputValue={this.state.inputValue}
+        state={this.state}
       />
     )
   }

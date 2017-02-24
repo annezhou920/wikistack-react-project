@@ -21,6 +21,15 @@ export const loadPages = () => {
   }
 }
 
+export const addWikiPage = page => {
+  return dispatch => {
+    console.log('p', page)
+    return axios.post('/api/wiki', page)
+      .then(res => dispatch(receivePage(res.data)))
+      .catch(err => console.error(err));
+  }
+}
+
 // export const getPageByurlTitle = urlTitle => {
 //   return dispatch => {
 //     axios.get(`/api/wiki/${urlTitle}`)
@@ -28,11 +37,3 @@ export const loadPages = () => {
 //       .catch(err => console.error(err));
 //   }
 // }
-
-export const addWikiPage = (page) => {
-  return dispatch => {
-    return axios.post('/api/wiki')
-      .then(res => dispatch(receivePage(res.data)))
-      .catch(err => console.error(err));
-  }
-}
