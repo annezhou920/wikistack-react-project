@@ -16,6 +16,8 @@ const onPagesEnter = function(){
   store.dispatch(thunk);
 }
 
+
+
 // const onAppEnter = function(){
 //   axios.get('/api/wiki')
 //     .then(res => res.data)
@@ -30,8 +32,8 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path="/" component={Layout} onEnter={onPagesEnter}>
-        <Route path="/wiki" component={WikiPagesContainer} onEnter={onPagesEnter}/>
-        <Route path="/wiki/add" component={AddPageContainer} />
+        <Route path="/wiki" component={WikiPagesContainer} onEnter={onPagesEnter} />
+        <Route path="/wiki/add" component={AddPageContainer} onEnter={onPagesEnter} />
         <IndexRedirect to="/wiki" />
       </Route>
     </Router>
